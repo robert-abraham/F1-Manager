@@ -1,31 +1,38 @@
+import curses
 from curses import wrapper 
-import time
 import screen_handler
 
-#Import Assests 
-track_array = screen_handler.readFileIntoList("assets/track_array.txt")
-with open('assets/track_visual.txt', 'r') as file:
-    track = file.read()
-    file.close():
+from art import text2art
+import math
 
-
-
-instances = []
+#SETTINGS
 NUMBER_OF_CARS = 20
-for i in range(1, NUMBER_OF_CARS*2-1,2):
-    instances.append(screen_handler.racecar_class((32,105 - i*2-1)))
+REFRESH_RATE = 50
 
+#ASSET IMPORT 
+#USAGE EXAMPLE screen_handler.get_assets(asset_list, PATH, x, y)
+
+asset_list = {}
+track_array = screen_handler.readFileIntoList("assets/track_array.txt")
+track = screen_handler.get_assets(asset_list, "assets/track_visual.txt", 0,0)
+logo = screen_handler.get_assets(asset_list, "assets/f1_logo.txt", 54,5)
+instances = screen_handler.load_cars(NUMBER_OF_CARS)
 
 
 def main(stdscr):
+    lap = 0
+    start = None
     stdscr.nodelay(True)
-    stdscr.leaveok(True)
+
     while True:
-        stdscr.refresh()
-        time.sleep(.05)
-        screen_handler.update_cars(stdscr, track,instances, track_array)
+        screen_handler.load_assets(asset_list, stdscr)
+        screen_handler.update_cars(stdscr ,instances, track_array)
+        start, lap = screen_handler.update_lap(stdscr, text2art, math, asset_list, lap, start, 60, 17)
+        stdscr.move(30,0)
+        stdscr.refresh()        
+
+        curses.napms(REFRESH_RATE)
         c = stdscr.getch()
-        
         if c == ord('q'):
             break  # Exit the while loop
 

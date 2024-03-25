@@ -8,8 +8,7 @@ def readFileIntoList(read_file):
   except FileNotFoundError:
     print("File does not exist")
 
-class racecar_class: 
-    instances = []
+class racecar_class:     
     def __init__(self, current_position):
         self.current_position = current_position
         self.previous_position = None
@@ -35,15 +34,46 @@ class racecar_class:
                     self.previous_position = self.current_position
                     self.current_position = (next_row, next_col)
 
-def update_cars(stdscr, track, instances,track_array):
-    stdscr.addstr(0,0, track)
+def load_cars(NUMBER_OF_CARS):
+  instances = []
+  for i in range(1, NUMBER_OF_CARS*2+1,2):
+      instances.append(racecar_class((32,105 - i*2-1)))
+  
+  return instances
+
+
+def update_cars(stdscr, instances,track_array):
     for i in instances:
         i.get_next_position(track_array, stdscr)
 
-def get_assets(path, posx, posy):
-   with open(path, 'r') as file:
-    track = file.read()
-    file.close():
+def get_assets(asset_list, path, posx, posy):
+    with open(path, 'r') as file:
+        content = file.readlines()  # Read the entire contents of the file
+        asset_list[path] = (content, posx, posy)
+
+def add_text(asset_list, text ,x, y, text2art):
+  content = (text2art(text)).splitlines()
+  asset_list[text] = (content, x, y)
 
 
+def load_assets(assest_list: dict, stdscr):
+  for file, contents in assest_list.items():
+    asset, x , y = contents
+    for a in asset:
+      stdscr.addstr(y, x, a)
+      y+=1
 
+
+def update_lap(stdscr, text2art, math, asset_list, lap, start, x ,y):
+  
+  if start != None:
+    if stdscr.instr(2,2) != start:
+      lap+=1
+  else: 
+    start= stdscr.instr(2,2)
+
+  content = (text2art("LAP {}/16".format(math.ceil(lap/20)))).splitlines()
+  asset_list["LAP_UPDATER"] = (content, x, y)
+
+
+  return start, lap
