@@ -51,8 +51,8 @@ def get_assets(asset_list, path, posx, posy):
         content = file.readlines()  # Read the entire contents of the file
         asset_list[path] = (content, posx, posy)
 
-def add_text(asset_list, text ,x, y, text2art):
-  content = (text2art(text)).splitlines()
+def add_text(asset_list, text ,x, y, text2art, font_name = "Big"):
+  content = (text2art(text, font = font_name)).splitlines()
   asset_list[text] = (content, x, y)
 
 
@@ -72,8 +72,7 @@ def update_lap(stdscr, text2art, math, asset_list, lap, start, x ,y):
   else: 
     start= stdscr.instr(2,2)
 
-  content = (text2art("LAP {}/16".format(math.ceil(lap/20)))).splitlines()
-  asset_list["LAP_UPDATER"] = (content, x, y)
-
+  lap_update_contents = (text2art("LAP {}/16".format(math.ceil(lap/20)))).splitlines()
+  asset_list["LAP_UPDATER"] = (lap_update_contents, x, y)
 
   return start, lap
