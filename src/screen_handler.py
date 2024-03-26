@@ -1,3 +1,7 @@
+from art import text2art
+import math
+
+
 def readFileIntoList(read_file):
   try:
     with open(read_file, 'r') as reader:
@@ -51,7 +55,7 @@ def get_assets(asset_list, path, posx, posy):
         content = file.readlines()  # Read the entire contents of the file
         asset_list[path] = (content, posx, posy)
 
-def add_text(asset_list, text ,x, y, text2art, font_name = "Big"):
+def add_text(asset_list, text ,x, y, font_name = "Big"):
   content = (text2art(text, font = font_name)).splitlines()
   asset_list[text] = (content, x, y)
 
@@ -64,7 +68,7 @@ def load_assets(assest_list: dict, stdscr):
       y+=1
 
 
-def update_lap(stdscr, text2art, math, asset_list, lap, start, x ,y):
+def update_lap(stdscr, asset_list, lap, start, x ,y):
   
   if start != None:
     if stdscr.instr(2,2) != start:
