@@ -1,7 +1,6 @@
 from art import text2art
 import math
 
-
 def readFileIntoList(read_file):
   try:
     with open(read_file, 'r') as reader:
@@ -38,13 +37,13 @@ class racecar_class:
                     self.previous_position = self.current_position
                     self.current_position = (next_row, next_col)
 
+
 def load_cars(NUMBER_OF_CARS):
   instances = []
   for i in range(1, NUMBER_OF_CARS*2+1,2):
       instances.append(racecar_class((32,105 - i*2-1)))
   
   return instances
-
 
 def update_cars(stdscr, instances,track_array):
     for i in instances:
@@ -59,14 +58,12 @@ def add_text(asset_list, text ,x, y, font_name = "Big"):
   content = (text2art(text, font = font_name)).splitlines()
   asset_list[text] = (content, x, y)
 
-
 def load_assets(assest_list: dict, stdscr):
   for file, contents in assest_list.items():
     asset, x , y = contents
     for a in asset:
       stdscr.addstr(y, x, a)
       y+=1
-
 
 def update_lap(stdscr, asset_list, lap, start, x ,y):
   

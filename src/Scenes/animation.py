@@ -20,7 +20,7 @@ def animation(stdscr):
     lap = 0
     start = None
     stdscr.nodelay(True)
-
+    stdscr.clear()
     while True:
         screen_handler.load_assets(asset_list, stdscr)
         screen_handler.update_cars(stdscr ,instances, track_array)

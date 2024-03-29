@@ -3,12 +3,45 @@ import src.PartCosts as PartCosts
 import time
 
 
+technical_director = {}
+director_choices  = [("NEWEY",PartCosts.NEWEY), ("ALLISON", PartCosts.ALLISON), ("CARDILE",PartCosts.CARDILE)]
 
-aerodynamoc_focus = {}
+screen_handler.add_text(technical_director, "TECHNICAL        DIRECTOR" ,28, 0)
+screen_handler.get_assets(technical_director,"src/assets/people.txt", 30,10)
+screen_handler.add_text(technical_director, "NEWEY                    ALLISON                 CARDILE" , 32, 28, font_name="small")
+screen_handler.add_text(technical_director, "$" + (PartCosts.NEWEY), 40, 33, font_name='Rotated')
+screen_handler.add_text(technical_director, "$" +(PartCosts.ALLISON), 98, 33, font_name='Rotated')
+screen_handler.add_text(technical_director, "$" + (PartCosts.CARDILE), 157, 33, font_name='Rotated')
 
 
+primary_driver = {}
+driver1_choices  = [("VERSTAPPEN",PartCosts.VERSTAPPEN), ("LECLERC", PartCosts.LECLERC), ("HAMILTON",PartCosts.HAMILTON)]
 
+screen_handler.add_text(primary_driver, "PRIMARY       DRIVER" ,55, 0)
+screen_handler.get_assets(primary_driver,"src/assets/people.txt", 30,10)
+screen_handler.add_text(primary_driver, "VERSTAPPEN          LECLERC           HAMILTON" , 20, 28, font_name="small")
+screen_handler.add_text(primary_driver, "$" + (PartCosts.VERSTAPPEN), 40, 33, font_name='Rotated')
+screen_handler.add_text(primary_driver, "$" +(PartCosts.LECLERC), 98, 33, font_name='Rotated')
+screen_handler.add_text(primary_driver, "$" + (PartCosts.HAMILTON), 157, 33, font_name='Rotated')
 
+secondary_driver = {}
+driver2_choices  = [("PIASTRI",PartCosts.PIASTRI), ("GASLY", PartCosts.GASLY), ("ALBON",PartCosts.ALBON)]
+
+screen_handler.add_text(secondary_driver, "SECONDARY       DRIVER" ,40, 0)
+screen_handler.get_assets(secondary_driver,"src/assets/people.txt", 29,10)
+screen_handler.add_text(secondary_driver, "PIASTRI                     GASLY                           ALBON" , 29, 28, font_name="small")
+screen_handler.add_text(secondary_driver, "$" + (PartCosts.PIASTRI), 40, 33, font_name='Rotated')
+screen_handler.add_text(secondary_driver, "$" +(PartCosts.GASLY), 98, 33, font_name='Rotated')
+screen_handler.add_text(secondary_driver, "$" + (PartCosts.ALBON), 157, 33, font_name='Rotated')
+
+aerodynamic_focus = {}
+aero_choices  = [("Front Wing",PartCosts.FrontWing), ("Rear Wing", PartCosts.RearWing), ("Air Intake",PartCosts.AirIntake)]
+screen_handler.add_text(aerodynamic_focus, "AERODYNAMIC        FOCUS" ,32, 0)
+screen_handler.get_assets(aerodynamic_focus,"src/assets/aerodynamic.txt", 10,10)
+screen_handler.add_text(aerodynamic_focus, "FRONT WING           REAR    WING             AIR    INTAKE" , 10, 28, font_name="small")
+screen_handler.add_text(aerodynamic_focus, "$" + (PartCosts.FrontWing), 27, 33, font_name='Rotated')
+screen_handler.add_text(aerodynamic_focus, "$" +(PartCosts.RearWing), 95, 33, font_name='Rotated')
+screen_handler.add_text(aerodynamic_focus, "$" + (PartCosts.AirIntake), 167, 33, font_name='Rotated')
 
 engine_builders = {}
 engine_choices  = [("Ferrari",PartCosts.Ferrari), ("Honda", PartCosts.Honda), ("Mercedes",PartCosts.Mercedes)]
@@ -28,13 +61,12 @@ screen_handler.add_text(show_controls, "1          2          3 ", 30,10, font_n
 screen_handler.add_text(show_controls, "GAME CONTROLS", 35,0, font_name= "Star Strips")
 screen_handler.add_text(show_controls, "Try to stay under the cost cap, or else...", 15,30, font_name= "small")
 
-money_spent =  0
-cost_cap = "150,000,000"
+
+cost_cap = "120,000,000"
 
 CAR_CHOICES = []
 
-def get_choice(stdscr, choices):
-    global money_spent
+def get_choice(stdscr, choices, money_spent):
     c = stdscr.getch()
     while (True):
         if c == ord('1'):
@@ -49,14 +81,36 @@ def get_choice(stdscr, choices):
             CAR_CHOICES.append(choices[2][0])
             money_spent += int(choices[2][1].replace(",", ""))
             break
+    return money_spent
 
-
-def build_car(stdscr):
+def build_car(stdscr, ):
+    money_spent = 0
     stdscr.clear()
     stdscr.addstr("{:,}/{}".format(money_spent, cost_cap))
     screen_handler.load_assets(engine_builders, stdscr)
-    get_choice(stdscr, engine_choices)
+    money_spent = get_choice(stdscr, engine_choices,money_spent)
+    
+    stdscr.clear()
+    stdscr.addstr("{:,}/{}".format(money_spent, cost_cap))
+    screen_handler.load_assets(aerodynamic_focus, stdscr)
+    money_spent = get_choice(stdscr, aero_choices,money_spent)
 
+    stdscr.clear()
+    stdscr.addstr("{:,}/{}".format(money_spent, cost_cap))
+    screen_handler.load_assets(technical_director, stdscr)
+    money_spent = get_choice(stdscr, director_choices,money_spent)
+
+
+    stdscr.clear()
+    stdscr.addstr("{:,}/{}".format(money_spent, cost_cap))
+    screen_handler.load_assets(primary_driver, stdscr)
+    money_spent = get_choice(stdscr, driver1_choices,money_spent)
+
+    stdscr.clear()
+    stdscr.addstr("{:,}/{}".format(money_spent, cost_cap))
+    screen_handler.load_assets(secondary_driver, stdscr)
+    money_spent = get_choice(stdscr, driver2_choices,money_spent)
+    return money_spent, CAR_CHOICES
 
 
 def show_controls_screen(stdscr):    
