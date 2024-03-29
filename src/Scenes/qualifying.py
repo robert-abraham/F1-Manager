@@ -25,7 +25,7 @@ def determine_postion(stdscr, money_spent):
         
 qualifying_scene = {}
 screen_handler.add_text(qualifying_scene, "MONZA       F1       QUALIFYING" ,32, 0)
-screen_handler.add_text(qualifying_scene, "THIS    WILL    DETERMINE    STARTING    POSTION" ,3, 10, font_name = 'small')
+screen_handler.add_text(qualifying_scene, "THIS    WILL    DETERMINE    STARTING    POSTION" ,0, 10, font_name = 'small')
 screen_handler.add_text(qualifying_scene, "CHOOSE    A    NUMBER    BETWEEN   0-9" ,30, 20, font_name = "small")
 screen_handler.add_text(qualifying_scene, "YOUR    TEAM    WILL    ALSO    AFFECT    THIS" ,10, 29, font_name = 'small')
 

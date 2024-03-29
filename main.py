@@ -1,5 +1,5 @@
 import src.Scenes.carbuilder as carbuilder
-import Scenes.race as race
+import src.Scenes.race as race
 import src.Scenes.qualifying as qualifying
 from curses import wrapper
 
