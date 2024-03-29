@@ -3,7 +3,9 @@ import src.PartCosts as PartCosts
 import time
 
 
-technical_director = {}
+#USAGE EXAMPLE screen_handler.get_assets(asset_list, PATH, x, y)
+#ALL THIS CODE MAY SEEM REPEATITIVE, EACH OF THESE SYMOOLIZES AN ASSET ON SCREEN, ALL ITS DOING IS ADDING TO A LIST, AND THAT LIST WILL LOAD ALL OF THE ASSETS WITHIN THE LIST
+technical_director = {} #An example of a list, each list usually means a different scene. 
 director_choices  = [("NEWEY",PartCosts.NEWEY), ("ALLISON", PartCosts.ALLISON), ("CARDILE",PartCosts.CARDILE)]
 
 screen_handler.add_text(technical_director, "TECHNICAL        DIRECTOR" ,28, 0)
@@ -62,10 +64,11 @@ screen_handler.add_text(show_controls, "GAME CONTROLS", 35,0, font_name= "Star S
 screen_handler.add_text(show_controls, "Try to stay under the cost cap, or else...", 15,30, font_name= "small")
 
 
-cost_cap = "120,000,000"
+cost_cap = "120,000,000" #Cost Cap For Car Building
 
-CAR_CHOICES = []
+CAR_CHOICES = [] 
 
+#Car Choices Takes in a list of choices and gets a user input, it takes the input that correlates with the choice and adds it to a list, it also adds the cost of the choice to a variable named money_spent
 def get_choice(stdscr, choices, money_spent):
     c = stdscr.getch()
     while (True):
@@ -85,6 +88,7 @@ def get_choice(stdscr, choices, money_spent):
 
 def build_car(stdscr, ):
     money_spent = 0
+    #loading each set of choices, very hard to cut down this code, as the libary im using for some reason returns weird responses. I'd have to rewrite the screen handler module, which I  dont have time for. 
     stdscr.clear()
     stdscr.addstr("{:,}/{}".format(money_spent, cost_cap))
     screen_handler.load_assets(engine_builders, stdscr)
@@ -113,9 +117,10 @@ def build_car(stdscr, ):
     return money_spent, CAR_CHOICES
 
 
+#This scene just shows the controls for choosing your car, only stays up for 3 seconds
 def show_controls_screen(stdscr):    
     screen_handler.load_assets(show_controls, stdscr)
     stdscr.refresh()
-    time.sleep(2.5)
+    time.sleep(3)
  
 

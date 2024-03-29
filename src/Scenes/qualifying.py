@@ -3,7 +3,7 @@ from src.Scenes.carbuilder import cost_cap
 import random
 
 
-
+#This determines your postion based on the number you picked and wether or not you breached the cost cap for building your car
 def determine_postion(stdscr, money_spent):
     grid_penalty = False
     if money_spent > int(cost_cap.replace(",", "")):
@@ -23,8 +23,6 @@ def determine_postion(stdscr, money_spent):
             else:
                 return (9,10), grid_penalty
         
-
-
 qualifying_scene = {}
 screen_handler.add_text(qualifying_scene, "MONZA       F1       QUALIFYING" ,32, 0)
 screen_handler.add_text(qualifying_scene, "THIS    WILL    DETERMINE    STARTING    POSTION" ,3, 10, font_name = 'small')
@@ -35,18 +33,18 @@ qualifying_results = {}
 screen_handler.add_text(qualifying_results, "THE    RESULTS    ARE    IN..." ,25, 0)
 screen_handler.add_text(qualifying_results, "PRESS ANY KEY TO CONTINUE", 90, 34, font_name='Rotated')
 
-
 def qualifying(stdscr, money_spent, driver1, driver2):
     stdscr.clear()
     screen_handler.load_assets(qualifying_scene, stdscr)
     results, grid_penalty = determine_postion(stdscr, money_spent)
     stdscr.clear()
+    #informing the user if they breached the cost cap
     if grid_penalty == True:
         screen_handler.add_text(qualifying_results, "COST    CAP    BREACH    DETECTED" ,35, 22, font_name = 'small')
         screen_handler.add_text(qualifying_results, "4    PLACE    GRID    PENALTY" ,42, 26, font_name = 'small')
-
+    
+    #shows what driver qualified where
     screen_handler.add_text(qualifying_results, "{}      PLACED:     {}".format(driver1, results[0]), 3,7)
     screen_handler.add_text(qualifying_results, "{}      PLACED:     {}".format(driver2, results[1]), 3,14)
     screen_handler.load_assets(qualifying_results, stdscr)
-
     stdscr.getch()
