@@ -4,7 +4,7 @@ import src.screen_handler as screen_handler
 
 #SETTINGS
 NUMBER_OF_CARS = 20
-REFRESH_RATE = 5
+REFRESH_RATE = 25
 
 #ASSET IMPORT 
 #USAGE EXAMPLE screen_handler.get_assets(asset_list, PATH, x, y)
