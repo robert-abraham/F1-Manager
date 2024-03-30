@@ -78,7 +78,7 @@ def update_lap(stdscr, asset_list, lap, start, x ,y):
   else: 
     start= stdscr.instr(2,2)
 
-  lap_update_contents = (text2art("LAP {}/16".format(math.ceil(lap/20)))).splitlines()
+  lap_update_contents = (text2art("LAP {}/5".format(math.ceil(lap/20)))).splitlines()
   asset_list["LAP_UPDATER"] = (lap_update_contents, x, y)
 
   return start, lap

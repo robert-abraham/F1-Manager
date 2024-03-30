@@ -48,3 +48,4 @@ def qualifying(stdscr, money_spent, driver1, driver2):
     screen_handler.add_text(qualifying_results, "{}      PLACED:     {}".format(driver2, results[1]), 3,14)
     screen_handler.load_assets(qualifying_results, stdscr)
     stdscr.getch()
+    return(results)
