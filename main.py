@@ -1,3 +1,12 @@
+"""
+Robert
+ICS3UO
+main.py
+April 1 
+
+First Big Program. F1 Manager Game
+"""
+
 import src.Scenes.carbuilder as carbuilder
 import src.Scenes.race as race
 import src.Scenes.qualifying as qualifying
