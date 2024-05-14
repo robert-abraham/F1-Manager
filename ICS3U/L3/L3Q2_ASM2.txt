@@ -1,3 +1,11 @@
+"""
+Robert
+ICS3UO
+L3Q2_ASM2.py
+May 7 
+
+Analyze and alter a phrase inputted by user
+"""
 #Get User Input
 input = input("Please Input a Phrase for Analysis: ")
 

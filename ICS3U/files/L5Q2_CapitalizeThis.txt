@@ -1,0 +1,20 @@
+"""
+Robert
+ICS3UO
+L5Q1_ReadToMe.txt
+May 9 
+
+Read file, swap case of sentences, write to new file.
+"""
+
+import itertools
+
+number_of_lines =  5
+f = open(r"ICS3U\files\cap.txt", "r")
+file =  open("caseswapped.txt", "w")
+
+#All this for loop does is limits the number of lines it reads from the file, takes the current line and swaps it case
+for item in itertools.islice(f.readlines(), 0, number_of_lines):   
+        file.write(item.swapcase())
+file.close()
+f.close()

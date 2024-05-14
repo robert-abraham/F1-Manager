@@ -1,0 +1,12 @@
+"""
+Robert
+ICS3UO
+L5Q1_ReadToMe.txt
+May 9 
+
+Read file
+"""
+
+
+f = open(r"ICS3U\files\poem2.txt", "r")
+print(f.read())

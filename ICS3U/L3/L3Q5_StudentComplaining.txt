@@ -1,3 +1,13 @@
+"""
+Robert
+ICS3UO
+L3Q5_StudentComplaining.py
+May 7 
+
+Analyze and alter a phrase inputted by user, removing vowels
+"""
+
+
 #Get User Input
 phrase = input("Please Input a Phrase for Analysis: ")
 

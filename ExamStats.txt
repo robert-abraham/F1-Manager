@@ -1,0 +1,4 @@
+Average Marks: 69.13
+Maximum Mark: 99
+Minimum Mark: 43
+Range of Marks: 56
