@@ -1,0 +1,18 @@
+from L3Q2_MyRectangle import MyRectangle
+
+Rect1= MyRectangle()
+Rect2 = MyRectangle(length = 5, width = 3, units = 'inches')
+
+print("Rectangle 1 (Default):")
+print(f"Length: {Rect1.get_length()} {Rect1.get_units()}")
+print(f"Width: {Rect1.get_width()} {Rect1.get_units()}")
+print(f"Area: {Rect1.calculate_area()} {Rect1.get_units()}²")
+print(f"Perimeter: {Rect1.calculate_perimeter()} {Rect1.get_units()}")
+print(f"Is Square? {Rect1.is_square()}")
+print("-------------------------------------------------------------------------")
+print("Rectangle 1 (Default):")
+print(f"Length: {Rect2.get_length()} {Rect2.get_units()}")
+print(f"Width: {Rect2.get_width()} {Rect2.get_units()}")
+print(f"Area: {Rect2.calculate_area()} {Rect2.get_units()}²")
+print(f"Perimeter: {Rect2.calculate_perimeter()} {Rect2.get_units()}")
+print(f"Is Square? {Rect2.is_square()}")

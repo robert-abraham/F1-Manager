@@ -1,0 +1,25 @@
+class MyRectangle:
+    def __init__(self, length=1, width=1, units='metres'):
+        self.length = length
+        self.width = width
+        self.units = units
+
+    def calculate_area(self):
+        return self.length * self.width
+
+    def calculate_perimeter(self):
+        return (self.length + self.width)*2
+
+    def is_square(self):
+        return self.length == self.width
+
+    def get_length(self):
+        return self.length
+
+    def get_width(self):
+        return self.width
+
+    def get_units(self):
+        return self.units
+
+

@@ -1,0 +1,10 @@
+Input:
+Read Each Line of NoteInput.txt
+
+Processing:
+- Remove all non vowels and replace them with an integer. The first non vowels is assigned one, second non vowel is assigned two, so on and so forth. 
+- New string of non-vowel charachters in the order they were replaced with. In Uppercase 
+
+Output:
+Written to Console Screen
+Written to output file called NotOutput.txt
