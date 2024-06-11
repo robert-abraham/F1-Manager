@@ -6,8 +6,6 @@ from direct.gui.DirectButton import DirectButton
 from direct.showbase.Loader import Loader
 from direct.actor.Actor import Loader as loader
 from stageflow import Stage
-from stageflow.panda3d import Cutscene
-from stageflow.prefab import Quit
 
 
 class StartScreen(Stage):

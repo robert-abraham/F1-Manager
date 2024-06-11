@@ -17,10 +17,10 @@ class CharSelect(Stage):
     def enter(self, d):
         self.charselect = \
             OnscreenImage(
-                image="Assets/Alexander.png",
+                image="assets/Leaders/Alexander.png",
                 parent=base.pixel2d,
                 scale=(1920/3, 0, 1080/3),  # Image size
-                pos=(1470/2, 1, -956/2),  # Window size
+                pos=(base.resx/2, 1, -base.resy/2),  # Window size
             )
         
         self.lockbtn = \
@@ -70,6 +70,6 @@ class CharSelect(Stage):
             current = 0 
         else: 
             current += step
-        self.charselect.setImage(f"Assets/{characters[current]}.png")
+        self.charselect.setImage(f"assets/Leaders/{characters[current]}.png")
         self.country_selection.setText((countries[current]+ " - "+characters[current] +" ("+str(characters.index(characters[current])+1)+"/7)"))
 
