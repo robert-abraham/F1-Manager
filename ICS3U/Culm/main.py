@@ -6,6 +6,7 @@ from direct.showbase.Loader import Loader
 from Scenes.char_select import CharSelect
 from Scenes.start_screen import StartScreen
 from Scenes.main_menu import MainMenu
+from Scenes.shoot import TugOfWarGame
 from panda3d.core import loadPrcFileData
 import sys
 from stageflow import Flow
@@ -13,7 +14,7 @@ from stageflow import Stage
 
 
 #Change resolution 
-loadPrcFileData("", "win-size 1920  1080")
+loadPrcFileData("", "win-size 1470  956")
 #make full screen1470 x 956
 
 loadPrcFileData("", "fullscreen t")
@@ -24,14 +25,16 @@ loadPrcFileData("", "textures-power-2 none")
 ShowBase()
 
 
-base.resx = 1920
-base.resy = 1080
-base.scalebg = 2
+base.resx = 1470
+base.resy = 956
+base.scalebg = 2.25
 
 base.flow = Flow()
 base.flow.add_stage('StartScrn', StartScreen())
 base.flow.add_stage('CharSelcions', CharSelect())
 base.flow.add_stage('MainMenu', MainMenu())
-base.flow.transition('MainMenu') 
+base.flow.add_stage('TugOfWarGame', TugOfWarGame())
+
+base.flow.transition('TugOfWarGame') 
 
 base.run()

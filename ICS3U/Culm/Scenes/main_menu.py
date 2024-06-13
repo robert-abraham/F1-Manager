@@ -14,7 +14,7 @@ from panda3d.core import TransparencyAttrib
 class MainMenu(Stage):
     def enter(self, d):
         # Owned Countries in this order: AFR, ANT, AUS, EUR, IND, NOA, SOA
-        self.owned_countries = [1,1,1,0,0,0,0]
+        self.owned_countries = [1,1,1,1,0,0,0]
         self.country_codes = ["AFR", "ANT", "AUS", "EUR", "IND", "NOA", "SOA"]
         self.countries_map = [0,0,0,0,0,0,0]
         self.imgMAP = \
