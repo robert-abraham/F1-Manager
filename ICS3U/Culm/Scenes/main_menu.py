@@ -65,7 +65,7 @@ class MainMenu(Stage):
 
         #iterate through the alive emperors and create a button for each of them
         if len(base.alive_emperors) == 0:
-            base.flow.transition('StartScrn') 
+            base.flow.transition('EndScreen') 
         else:
             for count, emperor in enumerate(base.alive_emperors):
                 self.battle_btns.append(DirectButton(

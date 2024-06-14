@@ -20,6 +20,7 @@ from panda3d.core import loadPrcFileData
 import sys
 from stageflow import Flow
 from stageflow import Stage
+from Scenes.end_screen import EndScreen
 
 
 #Change resolution 
@@ -49,9 +50,12 @@ base.flow.add_stage('StartScrn', StartScreen())
 base.flow.add_stage('CharSelcions', CharSelect())
 base.flow.add_stage('MainMenu', MainMenu())
 base.flow.add_stage('MainGame', Game())
+base.flow.add_stage('EndScreen', EndScreen())
+
+
 
 #transtion to the first stage, being start screen
-base.flow.transition('StartScrn') 
+base.flow.transition('StartScrn', True) 
 
 #initilize window
 base.run()
